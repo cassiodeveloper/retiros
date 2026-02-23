@@ -1,58 +1,58 @@
 [
   {
+    "id": "krakow-2026-03",
     "title_pl": "Ćwiczenia Duchowne – Kraków",
     "title_en": "Spiritual Exercises – Kraków",
     "location": "Kraków",
+    "venue": "Dom Rekolekcyjny św. Józefa",
     "start": "2026-03-15",
     "end": "2026-03-18",
-    "signup": "https://forms.gle/SEU_LINK_AQUI"
+    "type": "men",
+    "language": "PL",
+    "description_pl": "Trzydniowe rekolekcje w ciszy według św. Ignacego...",
+    "description_en": "Three-day silent retreat following St. Ignatius...",
+    "signup": "https://forms.gle/..."
   },
   {
-    "title_pl": "Ćwiczenia Duchowne – Warszawa",
-    "title_en": "Spiritual Exercises – Warszawa",
-    "location": "Warszawa",
-    "start": "2026-05-10",
-    "end": "2026-05-13",
-    "signup": "mailto:ivepolska@example.com"
+    "id": "krakow-2026-03",
+    "title_pl": "Ćwiczenia Duchowne – Kraków",
+    "title_en": "Spiritual Exercises – Kraków",
+    "location": "Kraków",
+    "venue": "Dom Rekolekcyjny św. Józefa",
+    "start": "2026-03-15",
+    "end": "2026-03-18",
+    "type": "men",
+    "language": "PL",
+    "description_pl": "Trzydniowe rekolekcje w ciszy według św. Ignacego...",
+    "description_en": "Three-day silent retreat following St. Ignatius...",
+    "signup": "https://forms.gle/..."
   },
   {
-    "title_pl": "Ćwiczenia Duchowne – Warszawa",
-    "title_en": "Spiritual Exercises – Warszawa",
-    "location": "Warszawa",
-    "start": "2026-05-10",
-    "end": "2026-05-13",
-    "signup": "mailto:ivepolska@example.com"
+    "id": "krakow-2026-03",
+    "title_pl": "Ćwiczenia Duchowne – Kraków",
+    "title_en": "Spiritual Exercises – Kraków",
+    "location": "Kraków",
+    "venue": "Dom Rekolekcyjny św. Józefa",
+    "start": "2026-03-15",
+    "end": "2026-03-18",
+    "type": "men",
+    "language": "PL",
+    "description_pl": "Trzydniowe rekolekcje w ciszy według św. Ignacego...",
+    "description_en": "Three-day silent retreat following St. Ignatius...",
+    "signup": "https://forms.gle/..."
   },
   {
-    "title_pl": "Ćwiczenia Duchowne – Warszawa",
-    "title_en": "Spiritual Exercises – Warszawa",
-    "location": "Warszawa",
-    "start": "2026-05-10",
-    "end": "2026-05-13",
-    "signup": "mailto:ivepolska@example.com"
-  },
-  {
-    "title_pl": "Ćwiczenia Duchowne – Warszawa",
-    "title_en": "Spiritual Exercises – Warszawa",
-    "location": "Warszawa",
-    "start": "2026-05-10",
-    "end": "2026-05-13",
-    "signup": "mailto:ivepolska@example.com"
-  },
-  {
-    "title_pl": "Ćwiczenia Duchowne – Warszawa",
-    "title_en": "Spiritual Exercises – Warszawa",
-    "location": "Warszawa",
-    "start": "2026-05-10",
-    "end": "2026-05-13",
-    "signup": "mailto:ivepolska@example.com"
-  },
-  {
-    "title_pl": "Ćwiczenia Duchowne – Warszawa",
-    "title_en": "Spiritual Exercises – Warszawa",
-    "location": "Warszawa",
-    "start": "2026-05-10",
-    "end": "2026-05-13",
-    "signup": "mailto:ivepolska@example.com"
+    "id": "krakow-2026-03",
+    "title_pl": "Ćwiczenia Duchowne – Kraków",
+    "title_en": "Spiritual Exercises – Kraków",
+    "location": "Kraków",
+    "venue": "Dom Rekolekcyjny św. Józefa",
+    "start": "2026-03-15",
+    "end": "2026-03-18",
+    "type": "men",
+    "language": "PL",
+    "description_pl": "Trzydniowe rekolekcje w ciszy według św. Ignacego...",
+    "description_en": "Three-day silent retreat following St. Ignatius...",
+    "signup": "https://forms.gle/..."
   }
 ]

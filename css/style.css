@@ -94,11 +94,15 @@ body{
   box-shadow:var(--shadowHover);
 }
 
-.countdown{
-  margin-top:20px;
-  font-weight:700;
-  font-size:1.1rem;
-  color:#fff4f4;
+.countdown {
+  margin-top: 20px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--redDark);
+}
+
+.hero .countdown {
+  color: #fff4f4;
 }
 
 /* SECTIONS */
@@ -254,4 +258,93 @@ body{
 
 .header .container {
   padding: 0 28px;
+}
+
+.event-badge {
+  display:inline-block;
+  font-size:.75rem;
+  font-weight:700;
+  padding:4px 10px;
+  border-radius:999px;
+  margin-bottom:12px;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+}
+
+.badge-men { background:#e0f2fe; color:#0369a1; }
+.badge-women { background:#fce7f3; color:#9d174d; }
+.badge-mixed { background:#fee2e2; color:#991b1b; }
+
+.highlight-next {
+  border:2px solid var(--red);
+  box-shadow:0 20px 50px rgba(220,38,38,.15);
+}
+
+.breadcrumb {
+  font-size:.9rem;
+  margin-bottom:20px;
+  color:#6b7280;
+}
+.breadcrumb a {
+  text-decoration:none;
+  color:var(--redDark);
+}
+
+.detail-title {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+  color: var(--redDark);
+}
+
+.detail-meta {
+  margin: 20px 0;
+  padding: 20px;
+  background: var(--bgSoft);
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+}
+
+.meta-item {
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+}
+
+.detail-description {
+  margin-top: 20px;
+  font-size: 1.15rem;
+  line-height: 1.8;
+}
+
+/* ---------- BOTÃO DETALHE ---------- */
+
+.detail-actions {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.detail-actions .btn-primary {
+  padding: 18px 40px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  border-radius: 14px;
+  background: var(--red);
+  color: white;
+  border: none;
+  box-shadow: 0 15px 40px rgba(220,38,38,.25);
+  transition: all .25s ease;
+}
+
+.detail-actions .btn-primary:hover {
+  background: var(--redDark);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 50px rgba(220,38,38,.35);
+}
+
+.detail-actions {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: center;
 }

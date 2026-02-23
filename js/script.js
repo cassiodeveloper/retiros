@@ -53,6 +53,12 @@ async function loadEvents() {
   container.innerHTML = "";
 
   const currentYear = new Date().getFullYear();
+  const now = new Date();
+
+  const upcoming = events
+    .map(e => ({ ...e, startDate: new Date(e.start) }))
+    .filter(e => e.startDate > now)
+    .sort((a, b) => a.startDate - b.startDate)[0];
 
   events
     .filter(e => new Date(e.start).getFullYear() === currentYear)
@@ -60,27 +66,48 @@ async function loadEvents() {
       const card = document.createElement("div");
       card.className = "event-card";
 
-        card.innerHTML = `
+      if (event.id === upcoming?.id) {
+        card.classList.add("highlight-next");
+      }
+
+      const badgeText = {
+        pl: {
+          men: "Mężczyźni",
+          women: "Kobiety",
+          mixed: "Mieszane"
+        },
+        en: {
+          men: "Men",
+          women: "Women",
+          mixed: "Mixed"
+        }
+      };
+
+      card.innerHTML = `
         <div class="event-header">
-            ${currentLang === "pl" ? event.title_pl : event.title_en}
+          ${currentLang === "pl" ? event.title_pl : event.title_en}
         </div>
         <div class="event-body">
-            <div class="event-date">
+
+          <span class="event-badge badge-${event.type}">
+            ${badgeText[currentLang][event.type]}
+          </span>
+
+          <div class="event-date">
             ${event.start} – ${event.end}
-            </div>
-            <div class="event-location">
+          </div>
+
+          <div class="event-location">
             ${event.location}
-            </div>
-            <div class="event-actions">
-            <a href="${event.signup}" target="_blank" class="btn-primary">
-                ${currentLang === "pl" ? "Zapisz się" : "Register"}
+          </div>
+
+          <div class="event-actions">
+            <a href="retreat.html?id=${event.id}" class="btn-primary">
+              ${currentLang === "pl" ? "Szczegóły" : "Details"}
             </a>
-            <a href="#kontakt" class="btn-secondary">
-                ${currentLang === "pl" ? "Pytania" : "Questions"}
-            </a>
-            </div>
+          </div>
         </div>
-        `;
+      `;
 
       container.appendChild(card);
     });
