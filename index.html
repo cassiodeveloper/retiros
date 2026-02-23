@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ćwiczenia Duchowne IVE Polska</title>
+  <meta name="description" content="Trzydniowe Ćwiczenia Duchowne prowadzone przez księży Instytutu IVE w Polsce. Sprawdź terminy i zapisz się." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="logo">✠ IVE Polska</div>
+    <div>
+      <button id="langToggle" class="btn-small">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div id="countdown" class="countdown"></div>
+    <h1 data-i18n="hero_title"></h1>
+    <p data-i18n="hero_subtitle"></p>
+    <a href="#events" class="btn-primary" data-i18n="hero_cta"></a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-inner">
+        <h2 data-i18n="about_title"></h2>
+        <div class="content-block">
+            <p data-i18n="about_text"></p>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <div class="section-inner">
+        <h2 data-i18n="for_whom_title"></h2>
+        <div class="content-block">
+            <ul>
+            <li data-i18n="for_whom_1"></li>
+            <li data-i18n="for_whom_2"></li>
+            <li data-i18n="for_whom_3"></li>
+            </ul>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-inner">
+        <h2 data-i18n="how_title"></h2>
+        <div class="content-block">
+            <p data-i18n="how_text"></p>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section id="events" class="section alt">
+  <div class="container">
+    <div class="section-inner">
+        <h2 data-i18n="events_title"></h2>
+        <div class="content-block">
+            <div id="eventsContainer" class="events-grid"></div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>Instituto del Verbo Encarnado (IVE) – <a href="https://ive.org" target="_blank">ive.org</a></p>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

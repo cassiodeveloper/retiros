@@ -1,0 +1,257 @@
+:root{
+  --red:#dc2626;
+  --redDark:#991b1b;
+  --bg:#ffffff;
+  --bgSoft:#f8f8f8;
+  --text:#1f2937;
+  --muted:#6b7280;
+  --line:#e5e7eb;
+
+  --radius:14px;
+  --shadow:0 10px 30px rgba(0,0,0,.06);
+  --shadowHover:0 18px 40px rgba(0,0,0,.10);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+}
+
+/* HEADER */
+
+.header{
+  background:white;
+  border-bottom:3px solid var(--red);
+  padding:18px 0;
+}
+
+.header .container{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-weight:800;
+  letter-spacing:.4px;
+  color:var(--redDark);
+  padding: 4px 0;
+}
+
+.btn-small{
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--line);
+  background:white;
+  cursor:pointer;
+  font-weight:600;
+  margin-left: 10px;
+}
+
+/* HERO */
+
+.hero{
+  background:linear-gradient(135deg,var(--red),var(--redDark));
+  color:white;
+  text-align:center;
+  padding:120px 20px 90px;
+}
+
+.hero h1{
+  font-size:3rem;
+  margin-bottom:20px;
+}
+
+.hero p{
+  font-size:1.2rem;
+  max-width:700px;
+  margin:auto;
+  opacity:.95;
+}
+
+.hero .btn-primary{
+  margin-top:30px;
+}
+
+.btn-primary{
+  display:inline-block;
+  padding:15px 30px;
+  background:white;
+  color:var(--redDark);
+  font-weight:700;
+  text-decoration:none;
+  border-radius:10px;
+  transition:.3s;
+}
+
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--shadowHover);
+}
+
+.countdown{
+  margin-top:20px;
+  font-weight:700;
+  font-size:1.1rem;
+  color:#fff4f4;
+}
+
+/* SECTIONS */
+
+.section h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--red);
+  margin-top: 12px;
+  border-radius: 2px;
+}
+
+.section-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section{
+  padding:100px 20px;
+}
+
+.section.alt{
+  background:var(--bgSoft);
+}
+
+.section h2{
+  font-size:2.2rem;
+  margin-bottom:30px;
+  color:var(--redDark);
+}
+
+.content-block{
+  background:white;
+  padding:40px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  max-width:1000px;
+  margin:auto;
+  font-size:1.15rem;
+}
+
+/* EVENTS */
+
+.events-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+}
+
+.event-card{
+  background:white;
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:.3s;
+  border-top:6px solid var(--red);
+}
+
+.event-card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadowHover);
+}
+
+.event-header{
+  padding:25px;
+  font-size:1.2rem;
+  font-weight:700;
+  color:var(--redDark);
+}
+
+.event-body{
+  padding:25px;
+  border-top:1px solid var(--line);
+}
+
+.event-date{
+  font-weight:700;
+  margin-bottom:15px;
+  font-size:1.1rem;
+}
+
+.event-location{
+  margin-bottom:20px;
+  color:var(--muted);
+}
+
+/* ---------- BOTÕES CALENDÁRIO - CORREÇÃO REAL ---------- */
+
+.event-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center; /* alinhamento vertical natural */
+  margin-top: 14px;
+}
+
+.event-actions a {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all .2s ease;
+  line-height: 1.2;
+  border: 2px solid transparent; /* ambos têm borda */
+}
+
+/* BOTÃO PRINCIPAL */
+.event-actions .btn-primary {
+  background: var(--red);
+  color: white;
+  border-color: var(--red);
+}
+
+.event-actions .btn-primary:hover {
+  background: var(--redDark);
+  border-color: var(--redDark);
+}
+
+/* BOTÃO SECUNDÁRIO */
+.event-actions .btn-secondary {
+  background: white;
+  color: var(--redDark);
+  border-color: var(--red);
+}
+
+.event-actions .btn-secondary:hover {
+  background: rgba(220,38,38,.08);
+}
+
+/* FOOTER */
+
+.footer{
+  background:var(--redDark);
+  color:white;
+  padding:50px 20px;
+  text-align:center;
+}
+
+/* Garante espaçamento lateral consistente */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* Ajuste específico do header */
+.header {
+  padding: 18px 0;
+}
+
+.header .container {
+  padding: 0 28px;
+}
