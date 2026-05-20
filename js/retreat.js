@@ -1,99 +1,63 @@
-async function loadRetreat() {
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
+const typeLabels = {
+  men: "Mężczyźni",
+  women: "Kobiety",
+  mixed: "Wszyscy"
+};
 
-    const response = await fetch("data/events.json");
-    const events = await response.json();
+function formatDate(dateText) {
+  return new Intl.DateTimeFormat("pl-PL", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  }).format(new Date(`${dateText}T12:00:00`));
+}
 
-    const event = events.find(e => e.id === id);
+function formatDateRange(start, end) {
+  if (!start || !end) {
+    return "Termin zostanie podany wkrótce";
+  }
 
-    if (!event) {
-        document.getElementById("retreatContent").innerHTML = "Not found";
-        return;
-    }
+  if (start === end) {
+    return formatDate(start);
+  }
 
-    document.getElementById("breadcrumbTitle").innerText = event.title_en;
-    document.title = event.title_en;
-
-    const badgeText = {
-        pl: { men: "Mężczyźni", women: "Kobiety", mixed: "Mieszane" },
-        en: { men: "Men", women: "Women", mixed: "Mixed" }
-    };
-
-    const lang = document.documentElement.lang.startsWith("pl") ? "pl" : "en";
-
-    document.getElementById("retreatContent").innerHTML = `
-    <h1 class="detail-title">
-        ${lang === "pl" ? event.title_pl : event.title_en}
-    </h1>
-
-    <span class="event-badge badge-${event.type}">
-        ${badgeText[lang][event.type]}
-    </span>
-
-    <div class="detail-meta">
-
-        <div class="meta-item">
-        <strong>${lang === "pl" ? "Data" : "Date"}:</strong>
-        ${event.start} – ${event.end}
-        </div>
-
-        <div class="meta-item">
-        <strong>${lang === "pl" ? "Miejsce" : "Location"}:</strong>
-        ${event.venue}, ${event.location}
-        </div>
-
-        <div class="meta-item">
-        <strong>${lang === "pl" ? "Język" : "Language"}:</strong>
-        ${event.language}
-        </div>
-
-    </div>
-
-    <div class="detail-description">
-        ${lang === "pl" ? event.description_pl : event.description_en}
-    </div>
-
-    <div class="detail-actions">
-        <a href="${event.signup}" target="_blank" class="btn-primary">
-        ${lang === "pl" ? "Zapisz się na rekolekcje →" : "Register for Retreat →"}
-        </a>
-    </div>
-    `;
-
-    injectStructuredData(event);
-    updateMetaTags(event);
-    startDetailCountdown(event);
-
-    history.replaceState(null, "", `/retreat/${event.id}`);
+  return `${formatDate(start)} - ${formatDate(end)}`;
 }
 
 function updateMetaTags(event) {
-  const title = event.title_en;
-  const description = `Spiritual retreat in ${event.location}, ${event.start} – ${event.end}`;
+  const description = event.shortDescription || event.description || "Szczegóły terminu Ćwiczeń Duchownych.";
 
-  document.querySelector('meta[property="og:title"]').setAttribute("content", title);
+  document.title = `${event.title} | Ćwiczenia Duchowne`;
+  document.querySelector('meta[name="description"]').setAttribute("content", description);
+  document.querySelector('meta[property="og:title"]').setAttribute("content", event.title);
   document.querySelector('meta[property="og:description"]').setAttribute("content", description);
-  document.querySelector('meta[property="og:url"]').setAttribute("content", window.location.href);
-
-  document.title = title;
 }
 
-function startDetailCountdown(event) {
-  const el = document.getElementById("detailCountdown");
-  const startDate = new Date(event.start);
+function renderCountdown(event) {
+  const element = document.getElementById("detailCountdown");
+
+  if (!element) {
+    return;
+  }
+
+  if (!event.start) {
+    element.textContent = "Termin zostanie podany po potwierdzeniu organizacyjnym.";
+    return;
+  }
+
+  const startDate = new Date(`${event.start}T12:00:00`);
 
   function update() {
     const diff = startDate - new Date();
+
     if (diff <= 0) {
-      el.innerText = "Retreat has started";
+      element.textContent = "Te rekolekcje już się rozpoczęły lub odbyły.";
       return;
     }
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-
-    el.innerText = `Starts in ${days} days and ${hours} hours`;
+    element.textContent = `Do rozpoczęcia: ${days} dni i ${hours} godz.`;
   }
 
   update();
@@ -101,25 +65,99 @@ function startDetailCountdown(event) {
 }
 
 function injectStructuredData(event) {
+  if (!event.start) {
+    return;
+  }
+
   const script = document.createElement("script");
   script.type = "application/ld+json";
   script.textContent = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Event",
-    "name": event.title_en,
+    "name": event.title,
     "startDate": event.start,
     "endDate": event.end,
     "location": {
       "@type": "Place",
-      "name": event.location,
+      "name": event.venue || event.location,
       "address": {
         "@type": "PostalAddress",
         "addressLocality": event.location,
         "addressCountry": "PL"
       }
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "IVE Polska",
+      "url": "https://ive.org"
     }
   });
   document.head.appendChild(script);
+}
+
+function renderRetreat(event) {
+  const content = document.getElementById("retreatContent");
+  const breadcrumb = document.getElementById("breadcrumbTitle");
+  const signup = event.signup && event.signup !== "#" ? event.signup : "";
+
+  breadcrumb.textContent = event.title;
+
+  content.innerHTML = `
+    <h1 class="detail-title">${event.title}</h1>
+    <span class="event-badge">${typeLabels[event.type] || "Rekolekcje"}</span>
+
+    <div class="detail-meta">
+      <p><strong>Data:</strong> ${formatDateRange(event.start, event.end)}</p>
+      <p><strong>Miejsce:</strong> ${event.venue ? `${event.venue}, ` : ""}${event.location}</p>
+      <p><strong>Język:</strong> ${event.language || "PL"}</p>
+    </div>
+
+    <div class="detail-description">
+      <p>${event.description || event.shortDescription || "Szczegóły zostaną uzupełnione wkrótce."}</p>
+    </div>
+
+    <div class="detail-actions">
+      ${signup ? `<a class="btn-primary" href="${signup}" target="_blank" rel="noopener">Zapisz się</a>` : ""}
+      <a class="btn-secondary" href="index.html#terminy">Wróć do terminów</a>
+    </div>
+  `;
+}
+
+async function loadRetreat() {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+  const content = document.getElementById("retreatContent");
+
+  try {
+    const response = await fetch("data/events.json");
+    const events = await response.json();
+    const event = events.find(item => item.id === id);
+
+    if (!event) {
+      content.innerHTML = `
+        <div class="empty-state">
+          <strong>Nie znaleziono terminu.</strong>
+          <p>Wróć do listy rekolekcji i wybierz aktualny termin.</p>
+          <div class="detail-actions">
+            <a class="btn-primary" href="index.html#terminy">Zobacz terminy</a>
+          </div>
+        </div>
+      `;
+      return;
+    }
+
+    renderRetreat(event);
+    renderCountdown(event);
+    updateMetaTags(event);
+    injectStructuredData(event);
+  } catch (error) {
+    content.innerHTML = `
+      <div class="empty-state">
+        <strong>Nie udało się załadować szczegółów.</strong>
+        <p>Sprawdź plik data/events.json.</p>
+      </div>
+    `;
+  }
 }
 
 loadRetreat();

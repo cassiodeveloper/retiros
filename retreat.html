@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="pl">
-    <head>
-        <meta charset="UTF-8">
-        <title>Retreat Details</title>
-        <link rel="stylesheet" href="css/style.css" />
-        <meta property="og:title" content="">
-        <meta property="og:description" content="">
-        <meta property="og:type" content="event">
-        <meta property="og:url" content="">
-        <meta property="og:image" content="https://SEU_DOMINIO/preview.jpg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Szczegóły rekolekcji | Ćwiczenia Duchowne</title>
+  <meta name="description" content="Szczegóły wybranego terminu Ćwiczeń Duchownych w Polsce." />
+  <meta property="og:title" content="Szczegóły rekolekcji" />
+  <meta property="og:description" content="Informacje o terminie, miejscu i zapisach na Ćwiczenia Duchowne." />
+  <meta property="og:type" content="event" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-bar">
+      <a class="brand" href="index.html">Ćwiczenia Duchowne</a>
+      <nav class="main-nav" aria-label="Nawigacja">
+        <a href="index.html#terminy">Terminy</a>
+        <a href="index.html#czym-sa">Czym są?</a>
+      </nav>
+    </div>
+  </header>
 
-        <meta name="twitter:card" content="summary_large_image">
-    </head>
-    <body>
-        <header class="header">
-            <div class="container">
-                <div class="logo">IVE Polska</div>
-                <a href="/index.html" class="btn-secondary">← Back</a>
-            </div>
-        </header>
-        <section class="section">
-            <div class="container">
-                <div class="content-block">
-                    <nav class="breadcrumb">
-                        <a href="index.html">Home</a> →
-                        <span id="breadcrumbTitle"></span>
-                    </nav>
-                    <div id="detailCountdown" class="countdown"></div>
-                    <div class="content-block" id="retreatContent"></div>
-                </div>
-            </div>
-        </section>
-        <script src="js/retreat.js"></script>
-    </body>
+  <main class="section">
+    <div class="container narrow">
+      <nav class="breadcrumb" aria-label="Ścieżka">
+        <a href="index.html">Strona główna</a> / <span id="breadcrumbTitle">Szczegóły</span>
+      </nav>
+      <div id="detailCountdown" class="countdown" aria-live="polite"></div>
+      <div id="retreatContent"></div>
+    </div>
+  </main>
+
+  <script src="js/retreat.js"></script>
+</body>
 </html>

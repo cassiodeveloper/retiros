@@ -1,194 +1,178 @@
-let currentLang = "pl";
-
-const translations = {
-  pl: {
-    hero_title: "Ćwiczenia Duchowne (3 dni)",
-    hero_subtitle: "Rekolekcje w ciszy prowadzone przez księży IVE w Polsce.",
-    hero_cta: "Zobacz terminy",
-    about_title: "Czym są Ćwiczenia Duchowne?",
-    about_text: "Trzydniowe rekolekcje w milczeniu według metody św. Ignacego Loyoli. Czas modlitwy, konferencji i sakramentów.",
-    for_whom_title: "Dla kogo?",
-    for_whom_1: "Dla osób szukających rozeznania życiowego.",
-    for_whom_2: "Dla tych, którzy chcą pogłębić relację z Bogiem.",
-    for_whom_3: "Dla każdego, kto chce zatrzymać się i uporządkować życie.",
-    how_title: "Jak to wygląda?",
-    how_text: "Konferencje, modlitwa osobista, Msza Święta, spowiedź i cisza.",
-    events_title: "Terminy w bieżącym roku"
-  },
-  en: {
-    hero_title: "Spiritual Exercises (3 days)",
-    hero_subtitle: "Silent retreat led by IVE priests in Poland.",
-    hero_cta: "See dates",
-    about_title: "What are the Spiritual Exercises?",
-    about_text: "A three-day silent retreat following the method of St. Ignatius of Loyola.",
-    for_whom_title: "Who is it for?",
-    for_whom_1: "For those discerning important life decisions.",
-    for_whom_2: "For those who want to deepen their relationship with God.",
-    for_whom_3: "For anyone who needs silence and spiritual clarity.",
-    how_title: "How does it work?",
-    how_text: "Talks, personal prayer, Holy Mass, confession and silence.",
-    events_title: "Retreat dates this year"
-  }
+const labels = {
+  men: "Mężczyźni",
+  women: "Kobiety",
+  mixed: "Wszyscy"
 };
 
-function updateTexts() {
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.getAttribute("data-i18n");
-    el.innerText = translations[currentLang][key];
-  });
+function formatDate(dateText) {
+  return new Intl.DateTimeFormat("pl-PL", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  }).format(new Date(`${dateText}T12:00:00`));
 }
 
-document.getElementById("langToggle").addEventListener("click", () => {
-  currentLang = currentLang === "pl" ? "en" : "pl";
-  document.documentElement.lang = currentLang;
-  document.getElementById("langToggle").innerText = currentLang === "pl" ? "EN" : "PL";
-  updateTexts();
-  loadEvents();
-});
+function formatDateRange(start, end) {
+  if (!start || !end) {
+    return "Termin zostanie podany wkrótce";
+  }
 
-async function loadEvents() {
-  const response = await fetch("data/events.json");
-  const events = await response.json();
-  const container = document.getElementById("eventsContainer");
-  container.innerHTML = "";
+  if (start === end) {
+    return formatDate(start);
+  }
 
-  const currentYear = new Date().getFullYear();
+  return `${formatDate(start)} - ${formatDate(end)}`;
+}
+
+function getUpcomingEvent(events) {
   const now = new Date();
 
-  const upcoming = events
-    .map(e => ({ ...e, startDate: new Date(e.start) }))
-    .filter(e => e.startDate > now)
+  return events
+    .filter(event => event.published !== false && event.start)
+    .map(event => ({ ...event, startDate: new Date(`${event.start}T12:00:00`) }))
+    .filter(event => event.startDate >= now)
     .sort((a, b) => a.startDate - b.startDate)[0];
-
-  events
-    .filter(e => new Date(e.start).getFullYear() === currentYear)
-    .forEach(event => {
-      const card = document.createElement("div");
-      card.className = "event-card";
-
-      if (event.id === upcoming?.id) {
-        card.classList.add("highlight-next");
-      }
-
-      const badgeText = {
-        pl: {
-          men: "Mężczyźni",
-          women: "Kobiety",
-          mixed: "Mieszane"
-        },
-        en: {
-          men: "Men",
-          women: "Women",
-          mixed: "Mixed"
-        }
-      };
-
-      card.innerHTML = `
-        <div class="event-header">
-          ${currentLang === "pl" ? event.title_pl : event.title_en}
-        </div>
-        <div class="event-body">
-
-          <span class="event-badge badge-${event.type}">
-            ${badgeText[currentLang][event.type]}
-          </span>
-
-          <div class="event-date">
-            ${event.start} – ${event.end}
-          </div>
-
-          <div class="event-location">
-            ${event.location}
-          </div>
-
-          <div class="event-actions">
-            <a href="retreat.html?id=${event.id}" class="btn-primary">
-              ${currentLang === "pl" ? "Szczegóły" : "Details"}
-            </a>
-          </div>
-        </div>
-      `;
-
-      container.appendChild(card);
-    });
-
-    injectStructuredData(events);
-    startCountdown(events);
 }
 
-function injectStructuredData(events) {
-  const currentYear = new Date().getFullYear();
+function renderCountdown(events) {
+  const countdown = document.getElementById("countdown");
+  const upcoming = getUpcomingEvent(events);
 
-  const structured = events
-    .filter(e => new Date(e.start).getFullYear() === currentYear)
-    .map(e => ({
-      "@context": "https://schema.org",
-      "@type": "Event",
-      "name": currentLang === "pl" ? e.title_pl : e.title_en,
-      "startDate": e.start,
-      "endDate": e.end,
-      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "location": {
-        "@type": "Place",
-        "name": e.location,
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": e.location,
-          "addressCountry": "PL"
-        }
-      },
-      "organizer": {
-        "@type": "Organization",
-        "name": "Instituto del Verbo Encarnado (IVE)",
-        "url": "https://ive.org"
-      },
-      "offers": {
-        "@type": "Offer",
-        "url": e.signup,
-        "availability": "https://schema.org/InStock"
-      }
-    }));
+  if (!countdown) {
+    return;
+  }
 
-  const scriptTag = document.createElement("script");
-  scriptTag.type = "application/ld+json";
-  scriptTag.textContent = JSON.stringify(structured);
-  document.head.appendChild(scriptTag);
-}
-
-function startCountdown(events) {
-  const now = new Date();
-
-  const upcoming = events
-    .map(e => ({ ...e, startDate: new Date(e.start) }))
-    .filter(e => e.startDate > now)
-    .sort((a, b) => a.startDate - b.startDate)[0];
-
-  if (!upcoming) return;
-
-  const countdownEl = document.getElementById("countdown");
+  if (!upcoming) {
+    countdown.textContent = "Nowe terminy zostaną opublikowane po potwierdzeniu miejsca i dat.";
+    return;
+  }
 
   function update() {
     const diff = upcoming.startDate - new Date();
+
     if (diff <= 0) {
-      countdownEl.innerHTML = currentLang === "pl"
-        ? "Rekolekcje już trwają"
-        : "Retreat has started";
+      countdown.textContent = "Najbliższe rekolekcje już się rozpoczęły.";
       return;
     }
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-
-    countdownEl.innerHTML =
-      currentLang === "pl"
-        ? `Najbliższe rekolekcje za ${days} dni i ${hours} godz.`
-        : `Next retreat in ${days} days and ${hours} hours`;
+    countdown.textContent = `Najbliższe rekolekcje: ${upcoming.location}, za ${days} dni i ${hours} godz.`;
   }
 
   update();
   setInterval(update, 3600000);
 }
 
-updateTexts();
+function renderEvents(events) {
+  const container = document.getElementById("eventsContainer");
+  const currentYear = new Date().getFullYear();
+  const upcoming = getUpcomingEvent(events);
+
+  if (!container) {
+    return;
+  }
+
+  const visibleEvents = events
+    .filter(event => event.published !== false)
+    .filter(event => !event.start || new Date(`${event.start}T12:00:00`).getFullYear() === currentYear)
+    .sort((a, b) => {
+      if (!a.start) return 1;
+      if (!b.start) return -1;
+      return new Date(a.start) - new Date(b.start);
+    });
+
+  if (!visibleEvents.length) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <strong>Brak aktualnie opublikowanych terminów.</strong>
+        <p>Gdy daty rekolekcji zostaną potwierdzone, pojawią się tutaj razem z miejscem i linkiem do zapisów.</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = visibleEvents.map(event => {
+    const isNext = event.id === upcoming?.id;
+    const type = labels[event.type] || "Rekolekcje";
+    const detailsUrl = `retreat.html?id=${encodeURIComponent(event.id)}`;
+    const signup = event.signup && event.signup !== "#" ? event.signup : "";
+
+    return `
+      <article class="event-card${isNext ? " highlight-next" : ""}">
+        <div class="event-header">
+          <h3>${event.title}</h3>
+          <span class="event-badge">${type}</span>
+        </div>
+        <div class="event-body">
+          <p class="event-date">${formatDateRange(event.start, event.end)}</p>
+          <p class="event-location">${event.venue ? `${event.venue}, ` : ""}${event.location}</p>
+          ${event.shortDescription ? `<p class="event-note">${event.shortDescription}</p>` : ""}
+          <div class="event-actions">
+            <a class="btn-primary" href="${detailsUrl}">Szczegóły</a>
+            ${signup ? `<a class="btn-secondary" href="${signup}" target="_blank" rel="noopener">Zapisy</a>` : ""}
+          </div>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+function injectStructuredData(events) {
+  const structuredEvents = events
+    .filter(event => event.published !== false && event.start)
+    .map(event => ({
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": event.title,
+      "startDate": event.start,
+      "endDate": event.end,
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": event.venue || event.location,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": event.location,
+          "addressCountry": "PL"
+        }
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "IVE Polska",
+        "url": "https://ive.org"
+      }
+    }));
+
+  if (!structuredEvents.length) {
+    return;
+  }
+
+  const script = document.createElement("script");
+  script.type = "application/ld+json";
+  script.textContent = JSON.stringify(structuredEvents);
+  document.head.appendChild(script);
+}
+
+async function loadEvents() {
+  try {
+    const response = await fetch("data/events.json");
+    const events = await response.json();
+    renderCountdown(events);
+    renderEvents(events);
+    injectStructuredData(events);
+  } catch (error) {
+    const container = document.getElementById("eventsContainer");
+    if (container) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <strong>Nie udało się załadować terminów.</strong>
+          <p>Sprawdź plik data/events.json.</p>
+        </div>
+      `;
+    }
+  }
+}
+
 loadEvents();
