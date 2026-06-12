@@ -5,26 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Szczegóły rekolekcji | Ćwiczenia Duchowne</title>
   <meta name="description" content="Szczegóły wybranego terminu Ćwiczeń Duchownych w Polsce." />
+  <link rel="canonical" href="https://ivepolska.github.io/retiros/retreat.html" />
+
   <meta property="og:title" content="Szczegóły rekolekcji" />
   <meta property="og:description" content="Informacje o terminie, miejscu i zapisach na Ćwiczenia Duchowne." />
   <meta property="og:type" content="event" />
+  <meta property="og:url" content="https://ivepolska.github.io/retiros/retreat.html" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Szczegóły rekolekcji" />
+  <meta name="twitter:description" content="Informacje o terminie, miejscu i zapisach na Ćwiczenia Duchowne." />
+
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="container header-bar">
-      <a class="brand" href="index.html">Ćwiczenia Duchowne</a>
-      <nav class="main-nav" aria-label="Nawigacja">
-        <a href="index.html#terminy">Terminy</a>
-        <a href="index.html#czym-sa">Czym są?</a>
+      <a class="brand" href="index.html" data-i18n="brand">Ćwiczenia Duchowne</a>
+      <nav class="main-nav" aria-label="Główna nawigacja">
+        <a href="index.html#czym-sa" data-i18n="nav_about">Czym są?</a>
+        <a href="index.html#dla-kogo" data-i18n="nav_for_whom">Dla kogo?</a>
+        <a href="index.html#papieze" data-i18n="nav_popes">Papieże</a>
+        <a href="index.html#terminy" data-i18n="nav_dates">Terminy</a>
       </nav>
+      <button id="langToggle" class="lang-toggle" type="button" aria-label="Change language">EN</button>
     </div>
   </header>
 
   <main class="section">
     <div class="container narrow">
       <nav class="breadcrumb" aria-label="Ścieżka">
-        <a href="index.html">Strona główna</a> / <span id="breadcrumbTitle">Szczegóły</span>
+        <a href="index.html" data-i18n="home">Strona główna</a> /
+        <span id="breadcrumbTitle" data-i18n="details">Szczegóły</span>
       </nav>
       <div id="detailCountdown" class="countdown" aria-live="polite"></div>
       <div id="retreatContent"></div>

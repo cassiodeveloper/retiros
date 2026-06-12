@@ -1,16 +1,21 @@
 [
   {
     "id": "terminy-w-przygotowaniu-2026",
-    "title": "Terminy rekolekcji w przygotowaniu",
-    "location": "Polska",
+    "title_pl": "Terminy rekolekcji w przygotowaniu",
+    "title_en": "Retreat dates in preparation",
+    "location_pl": "Polska",
+    "location_en": "Poland",
     "venue": "",
     "start": "",
     "end": "",
     "type": "mixed",
     "language": "PL",
-    "shortDescription": "Daty i miejsce zostaną opublikowane po potwierdzeniu organizacyjnym.",
-    "description": "Aktualne terminy Ćwiczeń Duchownych zostaną podane na tej stronie. Po potwierdzeniu miejsca rekolekcji pojawi się tutaj również link do zapisów.",
+    "shortDescription_pl": "Daty i miejsce zostaną opublikowane po potwierdzeniu organizacyjnym.",
+    "shortDescription_en": "Dates and location will be published after organizational confirmation.",
+    "description_pl": "Aktualne terminy Ćwiczeń Duchownych zostaną podane na tej stronie. Po potwierdzeniu miejsca rekolekcji pojawi się tutaj również link do zapisów.",
+    "description_en": "Upcoming Spiritual Exercises dates will be published on this page. Once the retreat location is confirmed, a registration link will also appear here.",
     "signup": "#",
+    "poster": "",
     "published": true
   }
 ]

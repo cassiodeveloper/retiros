@@ -7,12 +7,13 @@
 <body>
   <script>
     const path = window.location.pathname;
+    const base = path.includes("/retiros/") ? "/retiros/" : "/";
 
-    if (path.startsWith("/retreat/")) {
+    if (path.includes("/retreat/")) {
       const id = path.split("/retreat/")[1];
-      window.location.href = `/retreat.html?id=${encodeURIComponent(id)}`;
+      window.location.href = `${base}retreat.html?id=${encodeURIComponent(id)}`;
     } else {
-      window.location.href = "/index.html";
+      window.location.href = `${base}index.html`;
     }
   </script>
 </body>
