@@ -33,7 +33,7 @@
   }
   </script>
 </head>
-<body>
+<body class="home-page">
   <header class="site-header">
     <div class="container header-bar">
       <a class="brand" href="#top" data-i18n="brand">Ćwiczenia Duchowne</a>
@@ -52,7 +52,8 @@
       <div class="container hero-content">
         <div class="poland-mark" aria-hidden="true"></div>
         <p class="eyebrow" data-i18n="hero_eyebrow">Rekolekcje w ciszy w Polsce</p>
-        <h1 data-i18n="hero_title">Ćwiczenia Duchowne według św. Ignacego Loyoli</h1>
+        <h1 data-i18n="hero_title">Ćwiczenia Duchowne</h1>
+        <p class="hero-subtitle" data-i18n="hero_subtitle">według św. Ignacego Loyoli</p>
         <p class="hero-lead" data-i18n="hero_lead">Czas Łaski, Spotkania z Bogiem i Rozeznawania Jego Woli.</p>
         <div id="countdown" class="countdown" aria-live="polite"></div>
         <div class="hero-actions">
@@ -71,7 +72,8 @@
         <div class="text-panel">
           <p data-i18n="about_p1">Rekolekcje Ignacjańskie są czasem zatrzymania i wytchnienia pośród codziennego hałasu i zamętu.</p>
           <p data-i18n="about_p2">To szczególny czas łaski, w którym w ciszy i osobistej kontemplacji, z dala od rozproszeń i zmartwień, wsłuchujemy się w głos Boga:</p>
-          <blockquote class="scripture-quote" data-i18n="about_quote">„Mów, Panie, bo sługa Twój słucha”<br>(1 Sm 3,9–10).</blockquote>
+          <blockquote class="scripture-quote" data-i18n="about_quote">„Mów, Panie, bo sługa Twój słucha”</blockquote>
+          <p class="scripture-reference"><span data-i18n="about_quote_ref">(1 Sm 3,9–10)</span></p>
         </div>
       </div>
     </section>
@@ -106,8 +108,8 @@
         <div class="text-panel">
           <p data-i18n="how_summary">Na stronie głównej zostawiamy tylko krótki zarys. Pełniejszy opis przebiegu rekolekcji znajduje się na osobnej stronie.</p>
           <div class="image-placeholders compact-placeholders" aria-label="Przyszłe zdjęcia">
-            <div class="image-placeholder" data-i18n="placeholder_chapel">Kaplica</div>
-            <div class="image-placeholder" data-i18n="placeholder_silence">Retiro w ciszy</div>
+            <img class="how-image" src="images/how/confession.jpg" alt="Spowiedź" loading="lazy">
+            <img class="how-image" src="images/how/sakrament.jpg" alt="Najświętszy Sakrament" loading="lazy">
           </div>
           <a class="text-link" href="how-it-works.html" data-i18n="learn_more">Dowiedz się więcej</a>
         </div>
@@ -121,8 +123,8 @@
           <h2 data-i18n="author_title">Św. Ignacy Loyola</h2>
         </div>
         <div class="text-panel">
-          <div class="image-placeholder image-placeholder-large" data-i18n="placeholder_ignatius">Święty Ignacy</div>
-          <p data-i18n="author_summary">Św. Ignacy Loyola (1491–1556), założyciel Towarzystwa Jezusowego, pozostawił Kościołowi Ćwiczenia Duchowne jako drogę modlitwy, rozeznania i głębszego naśladowania Chrystusa.</p>
+          <img class="author-image" src="images/posters/San-Ignacio-de-Loyola-Blog.jpg" alt="Święty Ignacy Loyola" loading="lazy">
+          <p data-i18n="author_summary">Św. Ignacy Loyola (1491–1556), założyciel Towarzystwa Jezusowego i autor Ćwiczeń Duchowych, po swoim nawróceniu odkrył drogę modlitwy i rozeznawania, która pomaga człowiekowi rozpoznawać poruszenia serca, odkrywać wolę Bożą i wybierać dobro. Jego duchowość do dziś prowadzi niezliczone dusze do głębszego spotkania z Bogiem.</p>
           <a class="text-link" href="saint-ignatius.html" data-i18n="learn_more">Dowiedz się więcej</a>
         </div>
       </div>
@@ -151,7 +153,6 @@
             <p class="section-kicker" data-i18n="events_kicker">Terminy w bieżącym roku</p>
             <h2 data-i18n="events_title">Najbliższe rekolekcje w Polsce</h2>
           </div>
-          <p data-i18n="events_hint">Daty są ładowane z pliku data/events.json, aby można było łatwo aktualizować kalendarz.</p>
         </div>
         <div id="eventsContainer" class="events-grid" aria-live="polite"></div>
       </div>
