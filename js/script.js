@@ -135,7 +135,7 @@ const popeQuotes = [
   {
     name_pl: "Święty Jan Paweł II",
     name_en: "Saint John Paul II",
-    image: "../images/popes/joao-paulo-ii.jpg",
+    image: "../retiros/images/popes/joao-paulo-ii.jpg",
     source_pl: "Katedra św. Marcina w Bratysławie, 11 kwietnia 1995 r.",
     source_en: "St. Martin's Cathedral in Bratislava, April 11, 1995.",
     text_pl: "„Bardzo pożyteczne i skuteczne są również Ćwiczenia duchowe. Zachęcam was, abyście na stałe wpisali je do swojego programu każdego roku. Zachęcam was i proszę, abyście nie tylko sami je odprawiali, lecz także z przekonania stawali się apostołami tych chwil refleksji i modlitwy, które są pożyteczne nie tylko dla osób konsekrowanych, ale także dla wiernych świeckich.”",
@@ -144,7 +144,7 @@ const popeQuotes = [
   {
     name_pl: "Święty Jan Paweł II",
     name_en: "Saint John Paul II",
-    image: "../images/popes/joao-paulo-ii.jpg",
+    image: "../retiros/images/popes/joao-paulo-ii.jpg",
     source_pl: "",
     source_en: "",
     text_pl: "„Ćwiczenia duchowe są połączeniem rozważań i modlitwy w atmosferze skupienia i ciszy, a przede wszystkim szczególnym wewnętrznym poruszeniem wzbudzanym przez Ducha Świętego, otwierającym szerokie przestrzenie duszy na działanie łaski. Chrześcijanin, wchodząc w głęboką dynamikę Ćwiczeń duchowych, wkracza w sferę Bożych myśli i zamysłów, aby zawierzyć siebie Temu, który jest Prawdą i Miłością, i w ten sposób podjąć wymagające kroki naśladowania Chrystusa, jasno rozeznając swoje dary i własną odpowiedzialność.”",
@@ -153,7 +153,7 @@ const popeQuotes = [
   {
     name_pl: "Benedykt XVI",
     name_en: "Benedict XVI",
-    image: "../images/popes/pope_benedict_sitting.jpg",
+    image: "../retiros/images/popes/pope_benedict_sitting.jpg",
     source_pl: "Watykan, 9 II 2008.",
     source_en: "Vatican, February 9, 2008.",
     text_pl: "„Ćwiczenia duchowe stanowią szczególnie cenną drogę i metodę szukania oraz odnajdywania Boga — w nas, wokół nas i we wszystkim — aby poznać Jego wolę i ją wypełniać.”",
@@ -162,7 +162,7 @@ const popeQuotes = [
   {
     name_pl: "Franciszek",
     name_en: "Francis",
-    image: "../images/popes/francisco.jpg",
+    image: "../retiros/images/popes/francisco.jpg",
     source_pl: "Watykan, 7 II 2014.",
     source_en: "Vatican, February 7, 2014.",
     text_pl: "„Proponować Ćwiczenia duchowe oznacza zapraszać do doświadczenia Boga, Jego miłości i Jego piękna. Kto przeżywa Ćwiczenia duchowe w sposób autentyczny, doświadcza pociągającej siły i piękna Boga, a potem wraca odnowiony i przemieniony do codziennego życia, do służby i do zwyczajnych relacji, niosąc ze sobą woń Chrystusa.”",
@@ -171,7 +171,7 @@ const popeQuotes = [
   {
     name_pl: "Czcigodny Pius XII",
     name_en: "Venerable Pius XII",
-    image: "../images/popes/pio_xii.jpg",
+    image: "../retiros/images/popes/pio_xii.jpg",
     source_pl: "",
     source_en: "",
     text_pl: "„Dzisiaj w Kościele odczuwa się szczególne tchnienie Ducha Świętego, które wzywa do heroizmu i do całkowitego daru z siebie. Pośród cierni świata, który powraca do pogaństwa, wyrasta coraz więcej nieskalanych kwiatów, które swoją świeżością dodają odwagi i zachwycają swoim zapachem… Pragnąłbym, aby kapłani umieli ze świętą odwagą i bez lęku ukazywać ludziom najwyższe szczyty świętości.”",
@@ -180,7 +180,7 @@ const popeQuotes = [
   {
     name_pl: "Pius XI",
     name_en: "Pius XI",
-    image: "../images/popes/PioXI-600x330.jpg",
+    image: "../retiros/images/popes/PioXI-600x330.jpg",
     source_pl: "Mens Nostra o ćwiczeniach duchowych i ich coraz szerszym stosowaniu, 20 XII 1929, Acta Apostolicae Sedis 22 (1930), s. 5–20.",
     source_en: "Mens Nostra on the Spiritual Exercises and their wider use, December 20, 1929, Acta Apostolicae Sedis 22 (1930), pp. 5-20.",
     text_pl: "„Ćwiczenia duchowe św. Ignacego Loyoli, które zostały najwyżej pochwalone przez świętych i mistrzów życia duchowego oraz które przez cztery stulecia przyniosły niezliczone owoce świętości, zawierają to przedziwne dzieło, niewielkie wprawdzie pod względem rozmiaru, ale wielkie i cenne pod względem nauki.”",
