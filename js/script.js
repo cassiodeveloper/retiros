@@ -10,8 +10,8 @@ const translations = {
     nav_popes: "Papieże",
     nav_dates: "Terminy",
     hero_eyebrow: "Rekolekcje w ciszy w Polsce",
-    hero_title: "Ćwiczenia Duchowne",
-    hero_subtitle: "według św. Ignacego Loyoli",
+    hero_title: "Rekolekcje w ciszy",
+    hero_subtitle: "W duchu Ćwiczeń Duchowych Sw. Ignacego",
     hero_lead: "Czas Łaski, Spotkania z Bogiem i Rozeznawania Jego Woli.",
     hero_cta: "Zobacz terminy",
     hero_secondary: "Dowiedz się więcej",
@@ -39,7 +39,7 @@ const translations = {
     popes_title: "Papieże i Ćwiczenia Duchowne",
     testimonials_kicker: "Świadectwa",
     testimonials_title: "Owoce rekolekcji",
-    events_kicker: "Terminy w bieżącym roku",
+    events_kicker: "Najbliższe terminy",
     events_title: "Najbliższe rekolekcje w Polsce",
     events_hint: "Daty są ładowane z pliku data/events.json, aby można było łatwo aktualizować kalendarz.",
     learn_more: "Dowiedz się więcej",
@@ -73,8 +73,8 @@ const translations = {
     nav_popes: "Popes",
     nav_dates: "Dates",
     hero_eyebrow: "Silent retreats in Poland",
-    hero_title: "Spiritual Exercises",
-    hero_subtitle: "according to St. Ignatius of Loyola",
+    hero_title: "Silent Retreats",
+    hero_subtitle: "In the spirit of the Spiritual Exercises of St. Ignatius",
     hero_lead: "A time of grace, encounter with God, and discernment of His will.",
     hero_cta: "See dates",
     hero_secondary: "Learn more",
@@ -102,7 +102,7 @@ const translations = {
     popes_title: "Popes and the Spiritual Exercises",
     testimonials_kicker: "Testimonials",
     testimonials_title: "Fruits of the retreat",
-    events_kicker: "Dates this year",
+    events_kicker: "Upcoming dates",
     events_title: "Upcoming retreats in Poland",
     events_hint: "Dates are loaded from data/events.json so the calendar can be updated easily.",
     learn_more: "Learn more",
@@ -223,7 +223,7 @@ function renderBadges(type, language) {
 
   return `
     <div class="event-badges">
-      <span class="event-badge">${typeLabel}</span>
+      ${type ? `<span class="event-badge">${typeLabel}</span>` : ""}
       ${languageText ? `<span class="event-badge event-badge-language">${languageText}</span>` : ""}
     </div>
   `;
@@ -406,14 +406,14 @@ function renderEventCountdowns() {
 
 function renderEvents(events) {
   const container = document.getElementById("eventsContainer");
-  const currentYear = new Date().getFullYear();
+  const now = new Date();
   const upcoming = getUpcomingEvent(events);
 
   if (!container) return;
 
   const visibleEvents = events
     .filter(event => event.published !== false)
-    .filter(event => !event.start || parseEventDate(event.start)?.getFullYear() === currentYear)
+    .filter(event => !event.start || parseEventDate(event.end || event.start) >= now)
     .sort((a, b) => {
       if (!a.start) return 1;
       if (!b.start) return -1;

@@ -90,7 +90,7 @@ function renderBadges(type, language) {
 
   return `
     <div class="event-badges">
-      <span class="event-badge">${typeLabel}</span>
+      ${type ? `<span class="event-badge">${typeLabel}</span>` : ""}
       ${languageText ? `<span class="event-badge event-badge-language">${languageText}</span>` : ""}
     </div>
   `;
@@ -370,7 +370,7 @@ function renderRetreat(event) {
     <div class="detail-meta">
       <p><strong>${t("date")}:</strong> ${formatDateRange(event.start, event.end, getLocalized(event, "startLabel"), getLocalized(event, "endLabel"))}</p>
       <p><strong>${t("place")}:</strong> ${renderLocation(event)}</p>
-      <p><strong>${t("language")}:</strong> ${event.language || "PL"}</p>
+      ${event.language ? `<p><strong>${t("language")}:</strong> ${event.language}</p>` : ""}
     </div>
 
     ${renderEventImage(event)}
