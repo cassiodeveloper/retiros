@@ -178,7 +178,7 @@ function renderLocation(event) {
 }
 
 function shareUrl() {
-  return window.location.href;
+  return `https://slowowcielone.pl/retreat.html${window.location.search}`;
 }
 
 function shareText() {
@@ -217,6 +217,7 @@ function updateMetaTags(event) {
   const description = getLocalized(event, "shortDescription") || getLocalized(event, "description") || t("fallback_description");
 
   document.title = `${title} | Ćwiczenia Duchowne`;
+  document.querySelector('link[rel="canonical"]').setAttribute("href", shareUrl());
   document.querySelector('meta[name="description"]').setAttribute("content", description);
   document.querySelector('meta[property="og:title"]').setAttribute("content", title);
   document.querySelector('meta[property="og:description"]').setAttribute("content", description);
@@ -226,7 +227,7 @@ function updateMetaTags(event) {
 
   const socialImage = event.image || event.poster;
   if (socialImage) {
-    const imageUrl = new URL(socialImage, window.location.origin).href;
+    const imageUrl = new URL(socialImage, "https://slowowcielone.pl/").href;
     let ogImage = document.querySelector('meta[property="og:image"]');
     if (!ogImage) {
       ogImage = document.createElement("meta");
@@ -281,7 +282,7 @@ function injectStructuredData(event) {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": t("home"), "item": "https://ivepolska.github.io/retiros/" },
+        { "@type": "ListItem", "position": 1, "name": t("home"), "item": "https://slowowcielone.pl/" },
         { "@type": "ListItem", "position": 2, "name": getLocalized(event, "title"), "item": shareUrl() }
       ]
     }
@@ -296,7 +297,7 @@ function injectStructuredData(event) {
       "endDate": event.end,
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "eventStatus": "https://schema.org/EventScheduled",
-      "image": event.image || event.poster ? [new URL(event.image || event.poster, window.location.origin).href] : undefined,
+      "image": event.image || event.poster ? [new URL(event.image || event.poster, "https://slowowcielone.pl/").href] : undefined,
       "location": {
         "@type": "Place",
         "name": getLocalized(event, "venue") || getLocalized(event, "location"),

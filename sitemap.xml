@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ivepolska.github.io/retiros/</loc>
+    <loc>https://slowowcielone.pl/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ivepolska.github.io/retiros/saint-ignatius.html</loc>
+    <loc>https://slowowcielone.pl/saint-ignatius.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ivepolska.github.io/retiros/how-it-works.html</loc>
+    <loc>https://slowowcielone.pl/how-it-works.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ivepolska.github.io/retiros/retreat.html</loc>
+    <loc>https://slowowcielone.pl/retreat.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
