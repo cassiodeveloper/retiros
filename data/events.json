@@ -1,26 +1,30 @@
 [
   {
-    "id": "rekolekcje-w-ciszy-11-2027",
+    "id": "rekolekcje-w-ciszy-07-2027",
     "title_pl": "Rekolekcje w ciszy",
     "title_en": "Silent Retreats",
-    "location_pl": "Miejsce zostanie podane wkrótce",
-    "location_en": "Location to be announced",
-    "start": "2027-11-07",
-    "end": "2027-11-11",
-    "description_pl": "W duchu Ćwiczeń Duchowych Sw. Ignacego. Rekolekcje odbędą się w dniach 7–11 listopada 2027. Miejsce oraz szczegóły zostaną podane wkrótce.",
-    "description_en": "In the spirit of the Spiritual Exercises of St. Ignatius. The retreat will take place on November 7–11, 2027. The location and further details will be announced soon.",
+    "location_pl": "Ostrówek, Polska",
+    "location_en": "Ostrówek, Poland",
+    "venue_pl": "Dom rekolekcyjny",
+    "venue_en": "Retreat house",
+    "start": "2027-07-07",
+    "end": "2027-07-11",
+    "description_pl": "W duchu Ćwiczeń Duchowych Sw. Ignacego. Rekolekcje odbędą się w dniach 7–11 lipca 2027 w domu rekolekcyjnym w Ostrówku. Plakat oraz formularz zapisów zostaną udostępnione wkrótce.",
+    "description_en": "In the spirit of the Spiritual Exercises of St. Ignatius. The retreat will take place on July 7–11, 2027 at the retreat house in Ostrówek. The poster and registration form will be available soon.",
     "published": true
   },
   {
     "id": "rekolekcje-w-ciszy-02-2027",
     "title_pl": "Rekolekcje w ciszy",
     "title_en": "Silent Retreats",
-    "location_pl": "Miejsce zostanie podane wkrótce",
-    "location_en": "Location to be announced",
+    "location_pl": "Ostrówek, Polska",
+    "location_en": "Ostrówek, Poland",
+    "venue_pl": "Dom rekolekcyjny",
+    "venue_en": "Retreat house",
     "start": "2027-02-17",
     "end": "2027-02-21",
-    "description_pl": "W duchu Ćwiczeń Duchowych Sw. Ignacego. Rekolekcje odbędą się w dniach 17–21 lutego 2027. Miejsce oraz szczegóły zostaną podane wkrótce.",
-    "description_en": "In the spirit of the Spiritual Exercises of St. Ignatius. The retreat will take place on February 17–21, 2027. The location and further details will be announced soon.",
+    "description_pl": "W duchu Ćwiczeń Duchowych Sw. Ignacego. Rekolekcje odbędą się w dniach 17–21 lutego 2027 w domu rekolekcyjnym w Ostrówku. Plakat oraz formularz zapisów zostaną udostępnione wkrótce.",
+    "description_en": "In the spirit of the Spiritual Exercises of St. Ignatius. The retreat will take place on February 17–21, 2027 at the retreat house in Ostrówek. The poster and registration form will be available soon.",
     "published": true
   }
 ]
